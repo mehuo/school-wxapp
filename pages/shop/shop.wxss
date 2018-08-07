@@ -1,0 +1,21 @@
+.menus{
+
+}
+.menus .item{
+  display:inline-block;
+  width:80px;
+  margin-top:50px;
+  margin-bottom: 20px;
+  text-align:center;
+  font-size:14px;
+}
+.shopinfo{
+  margin: 0 15px;
+}
+.shopinfo .item{
+  border-bottom: solid 1px #cdcdcd;
+  width: 100%;
+  height:40px;
+  line-height: 40px;
+  
+}

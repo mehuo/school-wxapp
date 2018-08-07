@@ -1,0 +1,12 @@
+<view>
+  <view class="userinfo">
+    <view class="avatar">
+      <image src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+    </view>
+    <view class="name">{{userInfo.nickName}}</view>
+  </view>
+  <view class="todolist bg">
+    <view class="item">系统通知</view>
+    <view class="item">我的订单</view>
+  </view>
+</view>

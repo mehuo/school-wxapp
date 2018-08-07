@@ -1,0 +1,5 @@
+<!--logs.wxml-->
+<view class="pie">
+  <canvas class="circle" canvas-id="firstCanvas"></canvas>
+  <view class="result">79个</view>
+</view>

@@ -1,0 +1,46 @@
+<view>
+  <swiper class="scrollPage" indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image widthfix" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='canteen'>
+    <scroll-view scroll-x class='scroll'>
+      <view wx:for="{{canteenList}}" class="item">
+        <image src="{{item.image}}"></image>
+        <view>{{item.name}}</view>
+      </view>
+    </scroll-view>
+  </view> 
+  <view class="merchant">
+    <view class="title" bindtap='goMerchant'>食堂商家</view>
+    <view class="list">
+      <view wx:for="{{merchantList}}" class="item" bindtap="openShop">
+        <view class="image">
+          <image src="{{item.image}}"></image>
+          <view class="rest" wx:if="{{item.rest}}">商家休息</view>
+        </view>
+        <view class="cont">
+          <view class="box clearfix">
+            <view class="brand" wx:if="{{item.isBrand}}">品牌</view>
+            <view class="name">{{item.name}}</view>
+            <view class="tag" wx:if="{{item.isSend}}">外</view>
+            <view class="tag" wx:if="{{item.isShop}}">店</view>
+          </view>
+          <view class="box clearfix">
+            <view class="ontime" wx:if="{{item.onTime}}">准时达</view>
+          </view>
+          <view class="box clearfix">
+            <view class="condition">¥{{item.start}}起送</view>
+            <view class="condition">配送费约¥{{item.start}}</view>
+            <view class="condition">满{{item.start}}免配送费</view>
+            <view class="distance">{{item.distance}}m</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> 
+</view>

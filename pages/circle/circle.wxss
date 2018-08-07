@@ -1,0 +1,23 @@
+.pie{
+  position: relative;
+  width:200px;
+  height:200px;
+  left:50%;
+  transform:translateX(-50%);
+  margin-top:100px;
+
+}
+.circle{
+  width:200px;
+  height:200px;
+  position:absolute;
+  
+}
+.result{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 40px;
+  color: #41b882;
+}

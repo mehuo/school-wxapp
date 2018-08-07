@@ -1,0 +1,48 @@
+{
+  "pages":[
+    "pages/circle/circle",
+    "pages/canteen/canteen",
+    "pages/shop/shop",
+    "pages/merchant/merchant",
+    "pages/me/me",
+    "pages/index/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#8B8B8B",
+    "selectedColor": "#3E3E3E",
+    "borderStyle": "#B2B2B2",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/canteen/canteen",
+        "iconPath": "images/canteen.png",
+        "selectedIconPath": "images/canteen-on.png",
+        "text": "食堂"
+      },
+      {
+        "pagePath": "pages/circle/circle",
+        "iconPath": "images/circle.png",
+        "selectedIconPath": "images/circle-on.png",
+        "text": "圈子"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my-on.png",
+        "text": "我的"
+      }
+    ]
+  }
+}
