@@ -1,22 +1,54 @@
 <view>
-  <swiper class="scrollPage" indicator-dots="{{indicatorDots}}"
-    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{imgUrls}}">
-      <swiper-item>
-        <image src="{{item}}" class="slide-image widthfix" />
-      </swiper-item>
-    </block>
-  </swiper>
+  <view class="shopInfo">
+    <view class="bg"></view>
+    <view class="image">
+      <image src="{{currrntShop.image}}"></image>
+    </view>
+    <view class="name">{{currrntShop.name}}</view>
+  </view>
   <view class="menus">
-    <view class="item">订桌</view>
-    <view class="item">菜单</view>
-    <view class="item">预约</view>
+    <view class="item {{curTab == 1 ? 'active':''}}" bindtap="changeTab" data-way="1"><view class="way">点餐</view></view>
+    <view class="item {{curTab == 2 ? 'active':''}}" bindtap="changeTab" data-way="2"><view class="way">评价</view></view>
+    <view class="item {{curTab == 3 ? 'active':''}}" bindtap="changeTab" data-way="3"><view class="way">商家</view></view>
+  </view> 
+
+  <!-- 点餐 BEGIN -->
+  <view class="order {{curTab == 1 ? 'show' : 'hide'}}">
+    <view class="left">
+      <scroll-view class="scrollPage" scroll-y>
+        <view class="item {{index == 2 ? 'active':''}}" wx:for="{{pages}}" wx:key="index">
+          <view>{{item}}</view>
+        </view>      
+      </scroll-view>
+    </view>
+    <view class="right">
+      <scroll-view class="scrollPage" scroll-y>
+        <view class="item {{index == 2 ? 'active':''}}" wx:for="{{pages}}" wx:key="index">
+            <view>{{item}}</view>
+        </view>  
+      </scroll-view>
+    </view>
+    
+
+    
   </view>
-  <view class="shopinfo">
-    <view class="item">电话：010-88888888</view>
-    <view class="item">商家地址：广州市天河区中山大道</view>
-    <view class="item">营业时间：9:00-23:55</view>
+  <!-- 点餐 END -->
+
+  <!-- 评价 BEGIN -->
+  <view class="{{curTab == 2 ? 'show' : 'hide'}}">
+    评价
   </view>
+  <!-- 评价 END -->
+
+  <!-- 商家 BEGIN -->
+  <view class="{{curTab == 3 ? 'show' : 'hide'}}">
+    <view class="shopinfo">
+      <view class="item">电话：010-88888888</view>
+      <view class="item">商家地址：广州市天河区中山大道</view>
+      <view class="item">营业时间：9:00-23:55</view>
+    </view>
+  </view>
+  <!-- 商家  END -->
   
   
 </view>

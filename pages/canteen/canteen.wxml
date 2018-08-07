@@ -7,14 +7,25 @@
       </swiper-item>
     </block>
   </swiper>
-  <view class='canteen'>
+  <swiper class="scrollPage" indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{catePages}}" wx:key="index">
+      <swiper-item class="foodCates">
+        <view wx:for="{{category[index]}}" class="item">
+          <image src="{{item.image}}"></image>
+          <view>{{item.name}}</view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- <view class='canteen'>
     <scroll-view scroll-x class='scroll'>
       <view wx:for="{{canteenList}}" class="item">
         <image src="{{item.image}}"></image>
         <view>{{item.name}}</view>
       </view>
     </scroll-view>
-  </view> 
+  </view>  -->
   <view class="merchant">
     <view class="title" bindtap='goMerchant'>食堂商家</view>
     <view class="list">

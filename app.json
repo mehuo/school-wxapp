@@ -1,9 +1,10 @@
 {
   "pages":[
-    "pages/circle/circle",
-    "pages/canteen/canteen",
     "pages/shop/shop",
-    "pages/merchant/merchant",
+    
+    "pages/merchant/merchant",    
+    "pages/canteen/canteen",
+    "pages/circle/circle",
     "pages/me/me",
     "pages/index/index"
   ],
