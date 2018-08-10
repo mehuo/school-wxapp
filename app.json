@@ -1,10 +1,11 @@
 {
   "pages":[
+    "pages/circle/circle",
+    
     "pages/shop/shop",
     
     "pages/merchant/merchant",    
     "pages/canteen/canteen",
-    "pages/circle/circle",
     "pages/me/me",
     "pages/index/index"
   ],
