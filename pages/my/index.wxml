@@ -1,0 +1,93 @@
+<include src="/pages/canteen/commons/navbar/navbar.wxml"></include>
+<view class="hydlzhezhao" wx:if="{{hydl==true}}"></view>
+<view class="hydlbd" wx:if="{{hydl==true}}">
+    <view class="hydl">
+        <icon size="50" type="success"></icon>
+        <view>欢迎登录</view>
+    </view>
+    <button bindgetuserinfo="bindGetUserInfo" class="hydlqueren" openType="getUserInfo">+微信登录</button>
+</view>
+<view class="container">
+    <view class="font">
+        <view class="logs_header" style="background:{{color}}">
+            <view class="logs_img">
+                <image class="logs_imgs" src="{{avatarUrl}}"></image>
+                <view class="logs_name">
+                    <view class="logs_name1">{{nickName}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="logs_content">
+            <view bindtap="wallet" class="content_left">
+                <view class="content_left1">
+                    <text class="content_font">0</text>
+                    <text class="content_coll">元</text>
+                </view>
+                <view class="content_integral">钱包</view>
+            </view>
+            <view bindtap="wdyhq" class="content_left">
+                <view class="content_middle">
+                    <text class="content_font">{{yhnum}}</text>
+                    <text class="content_coll">个</text>
+                </view>
+                <view class="content_integral">优惠</view>
+            </view>
+            <view class="content_left">
+                <view bindtap="integral" class="content_right">
+                    <text class="content_font">0</text>
+                    <text class="content_coll">分</text>
+                </view>
+                <view class="content_integral">积分</view>
+            </view>
+        </view>
+        <view class="logs_order">
+            <view bindtap="wddz" class="logs_center">
+                <view class="logs_centerimg">
+                    <image class="center_map" src="/images/canteen/personal/dizhi.png" style="height:40rpx;"></image>
+                    <view>收货地址</view>
+                </view>
+                <image class="center_img" src="/images/canteen/blackjt.png"></image>
+            </view>
+            <view bindtap="wdyy" class="logs_center">
+                <view class="logs_centerimg">
+                    <image class="center_map" mode="aspectFit" src="/images/canteen/personal/yuyue.png"></image>
+                    <view>我的预约</view>
+                </view>
+                <image class="center_img" src="/images/canteen/blackjt.png"></image>
+            </view>
+            <view bindtap="wdyhq" class="logs_center">
+                <view class="logs_centerimg">
+                    <image class="center_map" mode="aspectFit" src="/images/canteen/personal/youhuiquan.png"></image>
+                    <view>我的优惠券</view>
+                </view>
+                <image class="center_img" src="/images/canteen/blackjt.png"></image>
+            </view>
+            <view bindtap="toMyOrder" class="logs_center">
+                <view class="logs_centerimg">
+                    <image class="center_map" mode="aspectFit" src="/images/canteen/personal/youhuiquan.png"></image>
+                    <view>我的订单</view>
+                </view>
+                <image class="center_img" src="/images/canteen/blackjt.png"></image>
+            </view>
+        </view>
+        <view class="logs_seller">
+            <!-- wx:if="{{system.is_mdrz==1}}" -->
+            <view bindtap="sjrz" class="logs_center" >
+                <view class="logs_centerimg">
+                    <image class="center_map" mode="aspectFit" src="/images/canteen/ruzhus.png"></image>
+                    <view>合作加盟</view>
+                </view>
+                <image class="center_img" src="/images/canteen/blackjt.png"></image>
+            </view>
+        </view>
+        <view class="footer">
+            <view bindtap="tzxcx" class="copyright">
+                <view class="copyright_logo">
+                    <image class="copyright_img" mode="aspectFill" src="{{url}}{{bqxx.bq_logo}}"></image>
+                    <view class="copyright_text">{{bqxx.bq_name}}</view>
+                </view>
+                <view class="copyright_txt">{{bqxx.support}}</view>
+            </view>
+        </view>
+    </view>
+</view>

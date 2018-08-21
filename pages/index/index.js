@@ -11,7 +11,12 @@ Page({
     duration: app.globalData.scrollPage.duration,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     hasUserInfo:false,
-    userInfo: null
+    userInfo: null,
+    activity:[
+      {image : '/images/index/news_1.jpeg'},
+      {image : '/images/index/news_2.jpeg'},
+      {image : '/images/index/news_3.jpeg'}
+    ]
   },
   onLoad: function (options) {
     var userInfo = wx.getStorageSync('userInfo');

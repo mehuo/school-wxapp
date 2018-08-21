@@ -6,6 +6,7 @@ Page({
     
   },
   onLoad: function () {
+    var colors = ['#9A10FF']
     var a = 100;
     var b = 100;
     var r1 = 75;

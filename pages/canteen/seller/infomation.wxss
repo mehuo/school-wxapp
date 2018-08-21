@@ -1,0 +1,52 @@
+.time {
+    background: #fff;
+    padding: 0 20rpx;
+}
+
+.head_balck {
+    font-weight: bold;
+    padding: 20rpx 0;
+}
+
+.icon {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+    vertical-align: middle;
+}
+
+.time>view:nth-child(2) {
+    padding: 20rpx 0;
+}
+
+.time>view:nth-child(3) {
+    padding: 0 0 0 50rpx;
+    color: #999;
+    margin-bottom: 20rpx;
+}
+
+.border_bottom {
+    border-bottom: 2rpx solid #e5e5e5;
+}
+
+.top {
+    margin-top: 20rpx;
+}
+
+.time>view:nth-child(4) {
+    width: 100%;
+    height: auto;
+}
+
+.time>view view {
+    width: 33.3%;
+    margin-bottom: 20rpx;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.address {
+    background: #fff;
+    padding: 0 20rpx;
+}

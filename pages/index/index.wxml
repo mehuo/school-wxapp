@@ -13,26 +13,24 @@
   </swiper>
   <view class="activity">
     <view class='icons item active'>校内活动</view>
-    <view class='icons item'>周边生活</view>
-    <view class='icons item'>校园服务</view>
     <view class='icons item'>校园头条</view>
+    <view class='icons item'>校园服务</view>
   </view>
+  
   <view class="news">
-    <view>2018年教师资格证新手报道指南</view>
+    <view class="icons">2018年教师资格证新手报道指南</view>
   </view>
-  <view class="box">
-    <view class="title">互动区</view>
-    <view class="line"></view>
-    <view class='interactive'>
-      <view class="item">爆料基地</view>
-      <view class="item">失物招领</view>
-      <view class="item">兼职服务</view>            
-    </view>
+
+  <view class="box zhaopin">
+    <image class="widthfix" src="/images/index/zhaopin.jpeg"  mode="aspectFill"></image> 
   </view>
+
   <view class="box">
-     <view class="title">最新活动</view>
+    <view class="title">最新活动</view>
     <view class="line"></view>
-    <image class="widthfix" src="/images/home_2.png"  mode="aspectFill"></image> 
+      <scroll-view scroll-y style="height: 300px;">
+        <image class="widthfix" wx:for="{{activity}}" src="{{item.image}}"  mode="aspectFill"></image> 
+      </scroll-view>
   </view>
   
 </view>

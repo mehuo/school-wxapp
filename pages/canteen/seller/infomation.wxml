@@ -1,0 +1,32 @@
+<view class="container">
+    <view class="time">
+        <view class="head_balck border_bottom">
+            营业时间
+        </view>
+        <view>
+            <image class="icon" src="../../img/seller/seller_info_img.png"></image>
+            营业时间
+        </view>
+    </view>
+    <view class="time top">
+        <view class="head_balck border_bottom">
+            服务设施
+        </view>
+        <view>
+            <image class="icon" src="../../img/seller/baox.png"></image>
+            包厢
+        </view>
+        <view>
+          个，apk买票【规划看完【和评价完【今后挖机【很骄傲我评价哈【哦呜
+        </view>
+        <view>
+            <view wx:for="{{info}}" wx:key="*this">
+                <image class="icon" src="{{item.img}}"></image>
+                {{item.name}}
+            </view>
+        </view>
+    </view>
+    <view class="top address">
+        <view class="head_balck border_bottom">交通地标</view>
+    </view>
+</view>
