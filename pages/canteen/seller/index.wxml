@@ -1,4 +1,4 @@
-<include src="/zh_cjdianc/pages/commons/navbar/navbar.wxml"></include>
+<include src="/pages/canteen/commons/navbar/navbar.wxml"></include>
 <view class="navbar flex-row" style="border:1rpx solid #d5d5d5" wx:if="{{xtxx.model=='1'}}">
     <navigator class="flex-grow-1 flex-y-center" openType="reLaunch" url="{{item.url}}" wx:for="{{arr}}">
         <view>
@@ -36,7 +36,7 @@
     </view>
     <view class="seller_info">
         <view class="copyrights">
-            <image mode="aspectFill" src="../../img/seller/seller_info_img.png"></image>
+            <image mode="aspectFill" src="/images/canteen/seller/seller_info_img.png"></image>
       商家详情
     </view>
         <view class="seller_head">
@@ -57,7 +57,7 @@
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_access" hoverClass="weui-cell_active">
                 <view class="weui-cell__hd">
-                    <image src="../../img/seller/xiuxi.png" style="margin-right: 5px;width:30rpx; height: 30rpx;"></image>
+                    <image src="/images/canteen/seller/xiuxi.png" style="margin-right: 5px;width:30rpx; height: 30rpx;"></image>
                 </view>
                 <view class="weui-cell__bd">营业时间：
           <text>{{store_info.time}}-{{store_info.time2}}</text>
@@ -67,16 +67,16 @@
             </view>
             <navigator class="weui-cell weui-cell_access" hoverClass="weui-cell_active">
                 <view class="weui-cell__hd">
-                    <image src="../../img/seller/address.png" style="margin-right: 5px;width:30rpx; height: 35rpx;"></image>
+                    <image src="/images/canteen/seller/address.png" style="margin-right: 5px;width:30rpx; height: 35rpx;"></image>
                 </view>
                 <view class="weui-cell__bd">{{store_info.address}}</view>
                 <view class="weui-cell__ft flex-row">
                     <view bindtap="seller_info" class="selleradd" style="padding-right: 20rpx;border-right: 1rpx solid #d5d5d5;">
-                        <image src="../../img/seller/car.png"></image>
+                        <image src="/images/canteen/seller/car.png"></image>
                         <view>导航</view>
                     </view>
                     <view bindtap="maketel" class="selleradd">
-                        <image src="../../img/seller/phone.png"></image>
+                        <image src="/images/canteen/seller/phone.png"></image>
                         <view>电话</view>
                     </view>
                 </view>
@@ -148,7 +148,7 @@
                     </view>
                 </view>
                 <view class="kong" style="background:#fff;" wx:if="{{Coupons.length==0}}">
-                    <image src="../../img/wushuju.png"></image>
+                    <image src="/images/canteen/wushuju.png"></image>
                     <view>暂无优惠券</view>
                 </view>
             </view>
@@ -172,7 +172,7 @@
                 </view>
             </view>
             <view class="kong" wx:if="{{tjcarr.length==0}}">
-                <image src="../../img/wushuju.png"></image>
+                <image src="/images/canteen/wushuju.png"></image>
                 <view>暂无相关数据</view>
             </view>
         </view>
@@ -199,10 +199,10 @@
                         <view class="flex-row flex-grow-1 flex-y-center">
                             <view class="pfimg">
                                 <view class="kximg">
-                                    <image src="../../img/i-star.png"></image>
+                                    <image src="/images/canteen/i-star.png"></image>
                                 </view>
                                 <view class="sximg" style="width: {{item.stars*20}}%">
-                                    <image src="../../img/i-stars.png"></image>
+                                    <image src="/images/canteen/i-stars.png"></image>
                                 </view>
                             </view>
                         </view>
@@ -218,11 +218,11 @@
                 </view>
             </view>
             <view class="jzz" hidden="{{mygd}}">
-                <image class="Rotation" src="../../img/jzz.png"></image>
+                <image class="Rotation" src="/images/canteen/jzz.png"></image>
                 <view>加载中...</view>
             </view>
             <view class="kong" wx:if="{{storelist.length==0&&mygd}}">
-                <image src="../../img/wushuju.png"></image>
+                <image src="/images/canteen/wushuju.png"></image>
                 <view>暂无相关数据</view>
             </view>
             <view class="jzwb" wx:if="{{mygd}}">

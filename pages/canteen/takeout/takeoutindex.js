@@ -87,7 +87,7 @@ Page({
             cachetime: "0",
             data: o.data.params,
             success: function(t) {
-                if(t.statusCode == 200){
+                if(t.statusCode == 200 && t.data){
                     console.log("分页返回的商家列表数据", t.data);
                     var a = [ {
                         name: "全部",
@@ -499,24 +499,27 @@ Page({
                 },
                 success: function(t) {
                     console.log(t.data);
-                    for (var a = 0; a < t.data.length; a++) t.data[a].quantity = Number(t.data[a].quantity);
-                    s[e.currentTarget.dataset.itemIndex].good = t.data, i.setData({
-                        cpjzz: !1
-                    }), app.util.request({
-                        url: "entry/wxapp/MyCar",
-                        cachetime: "0",
-                        data: {
-                            store_id: n,
-                            user_id: o
-                        },
-                        success: function(t) {
-                            console.log(t);
-                            for (var a = t.data.res, e = 0; e < a.length; e++) for (var o = 0; o < s[r].good.length; o++) a[e].good_id == s[r].good[o].id && (s[r].good[o].quantity = s[r].good[o].quantity + Number(a[e].num));
-                            console.log(s), i.setData({
-                                dishes: s
-                            });
-                        }
-                    });
+                    if(t.data){
+                        for (var a = 0; a < t.data.length; a++) t.data[a].quantity = Number(t.data[a].quantity);
+                        s[e.currentTarget.dataset.itemIndex].good = t.data, i.setData({
+                            cpjzz: !1
+                        }), app.util.request({
+                            url: "entry/wxapp/MyCar",
+                            cachetime: "0",
+                            data: {
+                                store_id: n,
+                                user_id: o
+                            },
+                            success: function(t) {
+                                console.log(t);
+                                for (var a = t.data.res, e = 0; e < a.length; e++) for (var o = 0; o < s[r].good.length; o++) a[e].good_id == s[r].good[o].id && (s[r].good[o].quantity = s[r].good[o].quantity + Number(a[e].num));
+                                console.log(s), i.setData({
+                                    dishes: s
+                                });
+                            }
+                        });
+                    }
+                    
                 }
             });
         } else console.log("已有缓存数据");
@@ -602,7 +605,7 @@ Page({
                         type: 2
                     },
                     success: function(t) {
-                        if(t.statusCode == 200){
+                        if(t.statusCode == 200 && t.data){
                             console.log(t.data);
                             var a = t.data.store.time, e = t.data.store.time2, o = t.data.store.time3, s = t.data.store.time4, i = t.data.store.is_rest;
                             console.log("当前的系统时间为" + l), console.log("商家的营业时间从" + a + "至" + e, o + "至" + s), 
@@ -656,7 +659,7 @@ Page({
                 },
                 success: function(t) {
                     console.log(t.data);
-                    if(t.statusCode == 200){
+                    if(t.statusCode == 200 && t.data){
                         for (var a = 0; a < t.data.length; a++) t.data[a].quantity = Number(t.data[a].quantity);
                             if (0 < t.data.length) {
                                 var e = new Array(), o = new Object();
@@ -669,26 +672,35 @@ Page({
                                     },
                                     success: function(t) {
                                         console.log(t.data);
-                                        var i = e.concat(t.data);
-                                        console.log(i), c.setData({
-                                            cpjzz: !1
-                                        }), app.util.request({
-                                            url: "entry/wxapp/MyCar",
-                                            cachetime: "0",
-                                            data: {
-                                                store_id: n,
-                                                user_id: s
-                                            },
-                                            success: function(t) {
-                                                console.log(t);
-                                                for (var a = t.data.res, e = 0; e < a.length; e++) for (var o = 0; o < i.length; o++) for (var s = 0; s < i[o].good.length; s++) a[e].good_id == i[o].good[s].id && (i[o].good[s].quantity = i[o].good[s].quantity + Number(a[e].num));
-                                                console.log(i), c.setData({
-                                                    cart_list: t.data,
-                                                    dishes: i,
-                                                    isloading: !1
-                                                }), c.subText();
-                                            }
-                                        });
+                                        if(t.data){
+                                            var i = e.concat(t.data);
+                                            console.log(i);
+                                            c.setData({
+                                                cpjzz: !1
+                                            });
+                                            app.util.request({
+                                                url: "entry/wxapp/MyCar",
+                                                cachetime: "0",
+                                                data: {
+                                                    store_id: n,
+                                                    user_id: s
+                                                },
+                                                success: function(t) {
+                                                    console.log('MyCar--------',t);
+                                                    for (var a = t.data.res, e = 0; e < a.length; e++) for (var o = 0; o < i.length; o++) for (var s = 0; s < i[o].good.length; s++) a[e].good_id == i[o].good[s].id && (i[o].good[s].quantity = i[o].good[s].quantity + Number(a[e].num));
+                                                    console.log(i);
+                                                    c.setData({
+                                                        cart_list: t.data,
+                                                        dishes: i,
+                                                        isloading: !1
+                                                    }), c.subText();
+                                                }
+                                            });
+                                        }else{
+                                            c.setData({
+                                                isloading: !1
+                                            })
+                                        }
                                     }
                                 });
                             } else app.util.request({
@@ -700,39 +712,48 @@ Page({
                                 },
                                 success: function(t) {
                                     console.log(t.data);
-                                    var i = t.data;
-                                    app.util.request({
-                                        url: "entry/wxapp/Dishes",
-                                        cachetime: "0",
-                                        data: {
-                                            type_id: i[0].id,
-                                            type: 2
-                                        },
-                                        success: function(t) {
-                                            console.log(t.data);
-                                            for (var a = 0; a < t.data.length; a++) t.data[a].quantity = Number(t.data[a].quantity);
-                                            i[0].good = t.data, c.setData({
-                                                cpjzz: !1
-                                            }), app.util.request({
-                                                url: "entry/wxapp/MyCar",
-                                                cachetime: "0",
-                                                data: {
-                                                    store_id: n,
-                                                    user_id: s
-                                                },
-                                                success: function(t) {
-                                                    console.log(t);
-                                                    for (var a = t.data.res, e = 0; e < a.length; e++) for (var o = 0; o < i.length; o++) for (var s = 0; s < i[o].good.length; s++) a[e].good_id == i[o].good[s].id && (i[o].good[s].quantity = i[o].good[s].quantity + Number(a[e].num));
-                                                    console.log(i), c.setData({
-                                                        cart_list: t.data,
-                                                        dishes: i,
+                                    if(t.data){
+                                        var i = t.data;
+                                        app.util.request({
+                                            url: "entry/wxapp/Dishes",
+                                            cachetime: "0",
+                                            data: {
+                                                type_id: i[0].id,
+                                                type: 2
+                                            },
+                                            success: function(t) {
+                                                console.log(t.data);
+                                                if(t.data){
+                                                    for (var a = 0; a < t.data.length; a++) t.data[a].quantity = Number(t.data[a].quantity);
+                                                    i[0].good = t.data, c.setData({
+                                                        cpjzz: !1
+                                                    }), app.util.request({
+                                                        url: "entry/wxapp/MyCar",
+                                                        cachetime: "0",
+                                                        data: {
+                                                            store_id: n,
+                                                            user_id: s
+                                                        },
+                                                        success: function(t) {
+                                                            console.log(t);
+                                                            for (var a = t.data.res, e = 0; e < a.length; e++) for (var o = 0; o < i.length; o++) for (var s = 0; s < i[o].good.length; s++) a[e].good_id == i[o].good[s].id && (i[o].good[s].quantity = i[o].good[s].quantity + Number(a[e].num));
+                                                            console.log(i), c.setData({
+                                                                cart_list: t.data,
+                                                                dishes: i,
+                                                                isloading: !1
+                                                            }), c.subText();
+                                                        }
+                                                    });
+                                                }else{
+                                                    c.setData({
                                                         isloading: !1
-                                                    }), c.subText();
+                                                    })
                                                 }
-                                            });
-                                        }
-                                });
-                            }
+                                                
+                                            }
+                                        });
+                                    }
+                                }
                         });
                     }else{
                         c.setData({
@@ -757,7 +778,8 @@ Page({
     },
     location: function() {
         var t = this.data.store.coordinates.split(","), a = this.data.store;
-        console.log(t), wx.openLocation({
+        console.log(t);
+        wx.openLocation({
             latitude: parseFloat(t[0]),
             longitude: parseFloat(t[1]),
             address: a.address,

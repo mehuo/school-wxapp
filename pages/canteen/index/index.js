@@ -609,32 +609,34 @@ Page({
             url: "entry/wxapp/system",
             cachetime: "0",
             success: function(t) {
-                console.log(t);
-                var n = t.data;
-                qqmapsdk = new QQMapWX({
-                    key: t.data.map_key
-                }), 
-                wx.setNavigationBarTitle({
-                    title: t.data.url_name
-                }), 
-                o.setData({
-                    mdxx: t.data
-                }), 
-                a.util.request({
-                    url: "entry/wxapp/TypeAd",
-                    cachetime: "0",
-                    success: function(t) {
-                        console.log(t.data);
-                        var a = [];
-                        if ("1" == n.fl_more) for (var e = 0, s = t.data.length; e < s; e += 8) a.push(t.data.slice(e, e + 8));
-                        if ("2" == n.fl_more) for (e = 0, s = t.data.length; e < s; e += 10) a.push(t.data.slice(e, e + 10));
-                        console.log(a), o.setData({
-                            navs: a
-                        });
-                    }
-                }), 
-                o.dwreLoad(),
-                wx.setStorageSync("bqxx", t.data);
+                console.log('t-------',t);
+                if(t.data){
+                    var n = t.data;
+                    qqmapsdk = new QQMapWX({
+                        key: t.data.map_key
+                    }), 
+                    wx.setNavigationBarTitle({
+                        title: t.data.url_name
+                    }), 
+                    o.setData({
+                        mdxx: t.data
+                    }), 
+                    a.util.request({
+                        url: "entry/wxapp/TypeAd",
+                        cachetime: "0",
+                        success: function(t) {
+                            console.log(t.data);
+                            var a = [];
+                            if ("1" == n.fl_more) for (var e = 0, s = t.data.length; e < s; e += 8) a.push(t.data.slice(e, e + 8));
+                            if ("2" == n.fl_more) for (e = 0, s = t.data.length; e < s; e += 10) a.push(t.data.slice(e, e + 10));
+                            console.log(a), o.setData({
+                                navs: a
+                            });
+                        }
+                    }), 
+                    o.dwreLoad(),
+                    wx.setStorageSync("bqxx", t.data);
+                }
             }
         })
         , a.util.request({
@@ -650,18 +652,23 @@ Page({
             url: "entry/wxapp/Brand",
             cachetime: "0",
             success: function(t) {
-                console.log(t.data), o.setData({
-                    Brand: t.data
-                });
+                console.log(t.data);
+                if(t.data && t.data.length>0){
+                    o.setData({
+                        Brand: t.data
+                    });
+                } 
             }
         })
         , a.util.request({
             url: "entry/wxapp/ZbOrder",
             cachetime: "0",
             success: function(t) {
-                console.log(t.data), o.setData({
-                    ZbOrder: t.data
-                });
+                if(t.data && t.data.length>0) {
+                    o.setData({
+                        ZbOrder: t.data
+                    });
+                }
             }
         })
         , a.util.request({
@@ -671,11 +678,23 @@ Page({
                 console.log(t);
                 for (var a = [], e = [], s = [], n = 0; n < t.data.length; n++) "1" == t.data[n].type && a.push(t.data[n]), 
                 "3" == t.data[n].type && e.push(t.data[n]), "4" == t.data[n].type && s.push(t.data[n]);
-                console.log(a, e, s), o.setData({
-                    toplb: a,
-                    zblb: e,
-                    dblb: s
-                });
+                console.log(a, e, s); 
+                if(a && a.length>0){
+                    o.setData({
+                        toplb: a
+                    });
+                }
+                if(e && e.length>0){
+                    o.setData({
+                        zblb: e
+                    });
+                }
+                if(s && s.length>0){
+                    o.setData({
+                        dblb: s
+                    });
+                }
+                
             }
         });
     },

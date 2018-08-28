@@ -108,76 +108,80 @@ App({
       console.log(e),e && i(e), e || a.util.request({
           url: "entry/wxapp/nav",
           success: function(e) {
-              var o = getApp().xtxx;
-              if (console.log(e, o), 0 == e.data.length) {
-                  if ("1" == o.model) var t = [ {
-                      logo: "/zh_cjdianc/img/tabindexf.png",
-                      logo2: "/zh_cjdianc/img/tabindex.png",
-                      title: "首页",
-                      title_color: "#34aaff",
-                      title_color2: "#888",
-                      url: "/zh_cjdianc/pages/index/index"
-                  }, {
-                      logo: "/zh_cjdianc/img/tabddf.png",
-                      logo2: "/zh_cjdianc/img/tabdd.png",
-                      title: "订单",
-                      title_color: "#34aaff",
-                      title_color2: "#888",
-                      url: "/zh_cjdianc/pages/wddd/order"
-                  }, {
-                      logo: "/zh_cjdianc/img/tabmyf.png",
-                      logo2: "/zh_cjdianc/img/tabmy.png",
-                      title: "我的",
-                      title_color: "#34aaff",
-                      title_color2: "#888",
-                      url: "/zh_cjdianc/pages/my/index"
-                  } ];
-                  if ("2" == o.model) t = [ {
-                      logo: "/zh_cjdianc/img/tabindexf.png",
-                      logo2: "/zh_cjdianc/img/tabindex.png",
-                      title: "首页",
-                      title_color: "#34aaff",
-                      title_color2: "#888",
-                      url: "/zh_cjdianc/pages/seller/index"
-                  }, {
-                      logo: "/zh_cjdianc/img/tabddf.png",
-                      logo2: "/zh_cjdianc/img/tabdd.png",
-                      title: "订单",
-                      title_color: "#34aaff",
-                      title_color2: "#888",
-                      url: "/zh_cjdianc/pages/wddd/order"
-                  }, {
-                      logo: "/zh_cjdianc/img/tabmyf.png",
-                      logo2: "/zh_cjdianc/img/tabmy.png",
-                      title: "我的",
-                      title_color: "#34aaff",
-                      title_color2: "#888",
-                      url: "/zh_cjdianc/pages/my/index"
-                  } ];
-                  if ("4" == o.model) t = [ {
-                      logo: "/zh_cjdianc/img/tabindexf.png",
-                      logo2: "/zh_cjdianc/img/tabindex.png",
-                      title: "首页",
-                      title_color: "#34aaff",
-                      title_color2: "#888",
-                      url: "/zh_cjdianc/pages/seller/indextakeout"
-                  }, {
-                      logo: "/zh_cjdianc/img/tabddf.png",
-                      logo2: "/zh_cjdianc/img/tabdd.png",
-                      title: "订单",
-                      title_color: "#34aaff",
-                      title_color2: "#888",
-                      url: "/zh_cjdianc/pages/wddd/order"
-                  }, {
-                      logo: "/zh_cjdianc/img/tabmyf.png",
-                      logo2: "/zh_cjdianc/img/tabmy.png",
-                      title: "我的",
-                      title_color: "#34aaff",
-                      title_color2: "#888",
-                      url: "/zh_cjdianc/pages/my/index"
-                  } ];
-                  l.navs = t, i(l), a.globalData.navbar = l;
-              } else l.navs = e.data, i(l), a.globalData.navbar = l;
+              console.log('e---------',e);
+              if(e.statusCode == 200 && e.data){
+                var o = getApp().xtxx;
+                if (console.log(e, o), 0 == e.data.length) {
+                    if ("1" == o.model) var t = [ {
+                        logo: "/zh_cjdianc/img/tabindexf.png",
+                        logo2: "/zh_cjdianc/img/tabindex.png",
+                        title: "首页",
+                        title_color: "#34aaff",
+                        title_color2: "#888",
+                        url: "/zh_cjdianc/pages/index/index"
+                    }, {
+                        logo: "/zh_cjdianc/img/tabddf.png",
+                        logo2: "/zh_cjdianc/img/tabdd.png",
+                        title: "订单",
+                        title_color: "#34aaff",
+                        title_color2: "#888",
+                        url: "/zh_cjdianc/pages/wddd/order"
+                    }, {
+                        logo: "/zh_cjdianc/img/tabmyf.png",
+                        logo2: "/zh_cjdianc/img/tabmy.png",
+                        title: "我的",
+                        title_color: "#34aaff",
+                        title_color2: "#888",
+                        url: "/zh_cjdianc/pages/my/index"
+                    } ];
+                    if ("2" == o.model) t = [ {
+                        logo: "/zh_cjdianc/img/tabindexf.png",
+                        logo2: "/zh_cjdianc/img/tabindex.png",
+                        title: "首页",
+                        title_color: "#34aaff",
+                        title_color2: "#888",
+                        url: "/zh_cjdianc/pages/seller/index"
+                    }, {
+                        logo: "/zh_cjdianc/img/tabddf.png",
+                        logo2: "/zh_cjdianc/img/tabdd.png",
+                        title: "订单",
+                        title_color: "#34aaff",
+                        title_color2: "#888",
+                        url: "/zh_cjdianc/pages/wddd/order"
+                    }, {
+                        logo: "/zh_cjdianc/img/tabmyf.png",
+                        logo2: "/zh_cjdianc/img/tabmy.png",
+                        title: "我的",
+                        title_color: "#34aaff",
+                        title_color2: "#888",
+                        url: "/zh_cjdianc/pages/my/index"
+                    } ];
+                    if ("4" == o.model) t = [ {
+                        logo: "/zh_cjdianc/img/tabindexf.png",
+                        logo2: "/zh_cjdianc/img/tabindex.png",
+                        title: "首页",
+                        title_color: "#34aaff",
+                        title_color2: "#888",
+                        url: "/zh_cjdianc/pages/seller/indextakeout"
+                    }, {
+                        logo: "/zh_cjdianc/img/tabddf.png",
+                        logo2: "/zh_cjdianc/img/tabdd.png",
+                        title: "订单",
+                        title_color: "#34aaff",
+                        title_color2: "#888",
+                        url: "/zh_cjdianc/pages/wddd/order"
+                    }, {
+                        logo: "/zh_cjdianc/img/tabmyf.png",
+                        logo2: "/zh_cjdianc/img/tabmy.png",
+                        title: "我的",
+                        title_color: "#34aaff",
+                        title_color2: "#888",
+                        url: "/zh_cjdianc/pages/my/index"
+                    } ];
+                    l.navs = t, i(l), a.globalData.navbar = l;
+                } else l.navs = e.data, i(l), a.globalData.navbar = l;
+              }
+              
           }
       });
   },
@@ -187,6 +191,24 @@ App({
           title: "",
           content: e
       });
+  },
+  getUserInfoIM:function(cb){
+    var that = this
+    if(this.globalData.userInfo){
+      typeof cb == "function" && cb(this.globalData.userInfo)
+    }else{
+      //调用登录接口
+      wx.login({
+        success: function (res) {
+          wx.getUserInfo({
+            success: function (res) {
+              that.globalData.userInfo = res.userInfo
+              typeof cb == "function" && cb(that.globalData.userInfo)
+            }
+          })
+        }
+      })
+    }
   },
   getUserInfo: function(o) {
       var t = this, e = this.globalData.userInfo;

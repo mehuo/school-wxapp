@@ -1,12 +1,18 @@
 {
   "pages":[ 
+    "pages/canteen/index/index",
+    
     "pages/index/index",
+    
+    
+    
+    "pages/chat/chat",
+    
     
     "pages/my/index",
 
     "pages/canteen/takeout/takeoutindex",
 
-    "pages/canteen/index/index",
 
     "pages/canteen/seller/index",
 
@@ -42,7 +48,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/circle/circle",
+        "pagePath": "pages/chat/chat",
         "iconPath": "images/circle.png",
         "selectedIconPath": "images/circle-on.png",
         "text": "通信"

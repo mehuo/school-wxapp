@@ -11,11 +11,14 @@ Page({
             url: "entry/wxapp/System",
             cachetime: "0",
             success: function(e) {
-                console.log(e), t.setData({
-                    System: e.data
-                }), qqmapsdk = new QQMapWX({
-                    key: e.data.map_key
-                });
+                console.log(e)
+                if(e.data){
+                    t.setData({
+                        System: e.data
+                    }), qqmapsdk = new QQMapWX({
+                        key: e.data.map_key
+                    });
+                }
             }
         });
     },

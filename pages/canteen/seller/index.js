@@ -184,32 +184,35 @@ Page({
             data: s.data.params,
             success: function(t) {
                 console.log("分页返回的商家列表数据", t.data);
-                var e = [ {
-                    name: "全部",
-                    num: t.data.all
-                }, {
-                    name: "满意",
-                    num: t.data.ok
-                }, {
-                    name: "不满意",
-                    num: t.data.no
-                } ], a = s.data.bfstorelist;
-                a = function(t) {
-                    for (var e = [], a = 0; a < t.length; a++) -1 == e.indexOf(t[a]) && e.push(t[a]);
-                    return e;
-                }(a = a.concat(t.data.assess)), s.setData({
-                    storelist: a,
-                    bfstorelist: a,
-                    navbar: e
-                }), t.data.assess.length < 10 ? s.setData({
-                    mygd: !0,
-                    jzgd: !0,
-                    isjzz: !1
-                }) : s.setData({
-                    jzgd: !0,
-                    pagenum: i + 1,
-                    isjzz: !1
-                }), console.log(a);
+                if(t.data){
+                    var e = [ {
+                        name: "全部",
+                        num: t.data.all
+                    }, {
+                        name: "满意",
+                        num: t.data.ok
+                    }, {
+                        name: "不满意",
+                        num: t.data.no
+                    } ], a = s.data.bfstorelist;
+                    a = function(t) {
+                        for (var e = [], a = 0; a < t.length; a++) -1 == e.indexOf(t[a]) && e.push(t[a]);
+                        return e;
+                    }(a = a.concat(t.data.assess)), s.setData({
+                        storelist: a,
+                        bfstorelist: a,
+                        navbar: e
+                    }), t.data.assess.length < 10 ? s.setData({
+                        mygd: !0,
+                        jzgd: !0,
+                        isjzz: !1
+                    }) : s.setData({
+                        jzgd: !0,
+                        pagenum: i + 1,
+                        isjzz: !1
+                    }), console.log(a);
+                }
+                
             }
         });
     },
@@ -307,39 +310,41 @@ Page({
                 store_id: t
             },
             success: function(t) {
-                console.log("商家详情"), console.log(t), wx.setNavigationBarTitle({
-                    title: t.data.store.name
-                }), d.setData({
-                    store_info: t.data.store,
-                    storeset: t.data.storeset
-                });
-                var e = t.data.storeset, a = d.data.nav;
-                "1" == e.is_dn && (a[1].active = !0, "" != e.dn_img && (a[1].img = e.dn_img), "" != e.dn_name && (a[1].name = e.dn_name), 
-                "" != e.dnsm && (a[1].smwz = e.dnsm)), "1" == e.is_wm && (a[0].active = !0, "" != e.wm_img && (a[0].img = e.wm_img), 
-                "" != e.wm_name && (a[0].name = e.wm_name), "" != e.wmsm && (a[0].smwz = e.wmsm)), 
-                "1" == e.is_yy && (a[2].active = !0, "" != e.yy_img && (a[2].img = e.yy_img), "" != e.yy_name && (a[2].name = e.yy_name), 
-                "" != e.sysm && (a[2].smwz = e.yysm)), "1" == e.is_sy && (a[3].active = !0, "" != e.sy_img && (a[3].img = e.sy_img), 
-                "" != e.sy_name && (a[3].name = e.sy_name), "" != e.sysm && (a[3].smwz = e.sysm)), 
-                console.log(a), d.setData({
-                    nav: a
-                });
-                var s = t.data.store.time, i = t.data.store.time2, n = t.data.store.time3, o = t.data.store.time4, r = t.data.store.is_rest;
-                console.log("当前的系统时间为" + l), console.log("商家的营业时间从" + s + "至" + i, n + "至" + o), 
-                1 == r ? console.log("商家正在休息" + r) : console.log("商家正在营业" + r), s < o ? s < l && l < i || n < l && l < o ? (console.log("商家正常营业"), 
-                d.setData({
-                    time: 1
-                })) : l < s || i < l && l < n ? (console.log("商家还没开店呐，稍等一会儿可以吗？"), d.setData({
-                    time: 2
-                })) : o < l && (console.log("商家以及关店啦，明天再来吧"), d.setData({
-                    time: 3
-                })) : o < s && (s < l && l < i || n < l && o < l || l < n && l < o ? (console.log("商家正常营业"), 
-                d.setData({
-                    time: 1
-                })) : l < s || i < l && l < n ? (console.log("商家还没开店呐，稍等一会儿可以吗？"), d.setData({
-                    time: 2
-                })) : o < l && (console.log("商家以及关店啦，明天再来吧"), d.setData({
-                    time: 3
-                })));
+                if(t.data){
+                    console.log("商家详情"), console.log(t), wx.setNavigationBarTitle({
+                        title: t.data.store.name
+                    }), d.setData({
+                        store_info: t.data.store,
+                        storeset: t.data.storeset
+                    });
+                    var e = t.data.storeset, a = d.data.nav;
+                    "1" == e.is_dn && (a[1].active = !0, "" != e.dn_img && (a[1].img = e.dn_img), "" != e.dn_name && (a[1].name = e.dn_name), 
+                    "" != e.dnsm && (a[1].smwz = e.dnsm)), "1" == e.is_wm && (a[0].active = !0, "" != e.wm_img && (a[0].img = e.wm_img), 
+                    "" != e.wm_name && (a[0].name = e.wm_name), "" != e.wmsm && (a[0].smwz = e.wmsm)), 
+                    "1" == e.is_yy && (a[2].active = !0, "" != e.yy_img && (a[2].img = e.yy_img), "" != e.yy_name && (a[2].name = e.yy_name), 
+                    "" != e.sysm && (a[2].smwz = e.yysm)), "1" == e.is_sy && (a[3].active = !0, "" != e.sy_img && (a[3].img = e.sy_img), 
+                    "" != e.sy_name && (a[3].name = e.sy_name), "" != e.sysm && (a[3].smwz = e.sysm)), 
+                    console.log(a), d.setData({
+                        nav: a
+                    });
+                    var s = t.data.store.time, i = t.data.store.time2, n = t.data.store.time3, o = t.data.store.time4, r = t.data.store.is_rest;
+                    console.log("当前的系统时间为" + l), console.log("商家的营业时间从" + s + "至" + i, n + "至" + o), 
+                    1 == r ? console.log("商家正在休息" + r) : console.log("商家正在营业" + r), s < o ? s < l && l < i || n < l && l < o ? (console.log("商家正常营业"), 
+                    d.setData({
+                        time: 1
+                    })) : l < s || i < l && l < n ? (console.log("商家还没开店呐，稍等一会儿可以吗？"), d.setData({
+                        time: 2
+                    })) : o < l && (console.log("商家以及关店啦，明天再来吧"), d.setData({
+                        time: 3
+                    })) : o < s && (s < l && l < i || n < l && o < l || l < n && l < o ? (console.log("商家正常营业"), 
+                    d.setData({
+                        time: 1
+                    })) : l < s || i < l && l < n ? (console.log("商家还没开店呐，稍等一会儿可以吗？"), d.setData({
+                        time: 2
+                    })) : o < l && (console.log("商家以及关店啦，明天再来吧"), d.setData({
+                        time: 3
+                    })));
+                }
             }
         });
     },
