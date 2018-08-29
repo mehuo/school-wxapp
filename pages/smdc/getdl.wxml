@@ -1,0 +1,4 @@
+<view class="head" style="background:{{color}}">
+    <image src="../../img/wxlogin.png"></image>
+</view>
+<button bindgetuserinfo="bindGetUserInfo" class="hydlqueren" openType="getUserInfo" style="background:{{color}}">+微信授权登录</button>

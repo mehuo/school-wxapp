@@ -19,6 +19,12 @@
             </swiper>
         </view>
     </view>
+     <view class="seller_nav">
+        <view bindtap="{{item.bindtap}}" wx:if="{{item.active}}" wx:for="{{nav}}" wx:key="*this">
+            <image mode="aspectFit" src="{{item.img}}"></image>
+      {{item.name}}
+        </view>
+    </view>
     <view class="seller_nav" wx:if="{{storeset.info_style=='1'}}">
         <view bindtap="{{item.bindtap}}" wx:if="{{item.active}}" wx:for="{{nav}}" wx:key="*this">
             <image mode="aspectFit" src="{{item.img}}"></image>

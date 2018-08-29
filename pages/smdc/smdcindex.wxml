@@ -1,34 +1,40 @@
-<!-- <view class="loadinggif" wx:if="{{isloading}}">
-    <image src="/images/canteen/loading.gif"></image>
-</view> -->
-<!-- wx:if="{{!isloading}}" -->
-<block >
-    <import src="/pages/canteen/commons/xy.wxml"></import>
+<view class="loadinggif" wx:if="{{isloading}}">
+    <image src="../../img/loading.gif"></image>
+</view>
+<block wx:if="{{!isloading}}">
+    <import src="/zh_cjdianc/pages/commons/xy.wxml"></import>
     <view class="sjinfohd flex-row flex-y-center" style="background:{{color}}">
         <image class="sjleftimg flex-grow-0" src="{{store.logo}}"></image>
         <view class="sjright flex-grow-1 flex-col flex-x-center">
             <view class="sjright1 flex-bet flex-y-center">
                 <view class="sjright1-l gobyndsingle">{{store.name}}</view>
+                <image bindtap="drdc" class="pin" src="../../img/pin.png" wx:if="{{oid==null}}"></image>
             </view>
-            <view class="sjright2 flex-row flex-y-center">
-                <image class="sjright2-l" src="/images/canteen/laba.png"></image>
+            <view bindtap="lookck" class="sjright2 flex-row flex-y-center">
+                <image class="sjright2-l" src="../../img/laba.png"></image>
                 <view class="flex-grow-1 gobyndsingle">{{store.announcement}}</view>
             </view>
-            <view bindtap="lookck" class="sjright3 flex-bet flex-y-center">
+            <view class="sjright3 flex-bet flex-y-center">
                 <view class="flex-row flex-y-center">
-                    <view class="sjright3text" style="padding-left:0">￥{{store.start_at}}起送</view>
-                    <view class="sjright3text">{{storeset.ps_time}}送达</view>
-                    <view class="sjright3text" style="border-right:0">{{storeset.ps_mode}}（{{storeset.ps_jl}}公里内）</view>
+                    <view class="sjright3text" style="padding-left:0">类型：{{tableinfo.type_name}}</view>
+                    <view class="sjright3text" style="border-right:0">桌号：{{tableinfo.table_name}}</view>
                 </view>
-                <view class="flex-row flex-y-center">
-                    <image class="sjright3-r" src="/images/canteen/jiantou.png"></image>
-                </view>
+            </view>
+        </view>
+        <view class="xfview" style="color:{{color}}">
+            <view bindtap="hjfwy" class="xfbt">
+                <image mode="aspectFit" src="../../img/seller/five.png"></image>
+                <view>呼叫</view>
+            </view>
+            <view bindtap="wddd" class="xfbt">
+                <image mode="aspectFit" src="../../img/tabddf.png"></image>
+                <view>订单</view>
             </view>
         </view>
     </view>
     <view class="sjinfonav">
         <scroll-view class="nav-two" scrollX="true">
-            <view bindtap="selectednavbar" class="toatal_head {{selectedindex==index?'selsect':'default'}}" data-index="{{index}}" style="color:{{selectedindex==index?color:''}}" wx:for="{{navbar}}" wx:key="*this">
+            <view bindtap="selectednavbar" class="toatal_head  {{selectedindex==index?'selsect':'default'}}" data-index="{{index}}" style="color:{{selectedindex==index?color:''}}" wx:for="{{navbar}}" wx:key="*this">
         {{item}}
         <view class="toatal_text" style="background-color: {{color}}" wx:if="{{selectedindex==index}}"></view>
             </view>
@@ -56,7 +62,7 @@
                             </swiper-item>
                         </swiper>
                     </view>
-                    <image class="flex-grow-0 down" src="/images/canteen/down.png"></image>
+                    <image class="flex-grow-0 down" src="../../img/down.png"></image>
                 </view>
                 <view class="dclb flex-row">
                     <scroll-view class="leftsv flex-col" scrollY="true" style="height:65vh;">
@@ -105,19 +111,14 @@
                                     </view>
                                     <view class="cplbright4 flex-bet">
                                         <view class="cplbright4-l flex-grow-1">
-                                            <text>￥{{gooditem.money}}</text>
-                                            <text>￥{{gooditem.money2}}</text>
+                                            <text>￥{{gooditem.dn_money}}</text>
                                         </view>
                                         <view class="cartControl flex-grow-0">
                                             <view catchtap="ggcartdec" class="cartdec" wx:if="{{gooditem.is_gg=='2'&&gooditem.quantity>0}}"></view>
                                             <view catchtap="cartdec" class="cartdec" data-goodid="{{gooditem.id}}" data-item-index="{{goodindex}}" data-parentIndex="{{catalogSelect}}" wx:if="{{gooditem.is_gg!='2'&&gooditem.quantity>0}}"></view>
                                             <view class="goodsnum" wx:if="{{gooditem.quantity>0}}">{{gooditem.quantity}}</view>
-                                            <form bindreset="formReset" bindsubmit="cartaddformSubmit" reportSubmit="true">
-                                                <button catchtap="spggck" class="xgg" data-goodid="{{gooditem.id}}" data-item-index="{{goodindex}}" data-parentIndex="{{catalogSelect}}" formType="submit" style="background:{{color}}" wx:if="{{gooditem.is_gg=='2'}}">选规格</button>
-                                            </form>
-                                            <form bindreset="formReset" bindsubmit="cartaddformSubmit" reportSubmit="true">
-                                                <button catchtap="cartadd" class="cartadd" data-goodid="{{gooditem.id}}" data-item-index="{{goodindex}}" data-parentIndex="{{catalogSelect}}" formType="submit" style="background:{{color}}" wx:if="{{gooditem.is_gg!='2'&&gooditem.inventory!='0'}}"></button>
-                                            </form>
+                                            <view catchtap="spggck" class="xgg" data-goodid="{{gooditem.id}}" data-item-index="{{goodindex}}" data-parentIndex="{{catalogSelect}}" style="background:{{color}}" wx:if="{{gooditem.is_gg=='2'}}">选规格</view>
+                                            <view catchtap="cartadd" class="cartadd" data-goodid="{{gooditem.id}}" data-item-index="{{goodindex}}" data-parentIndex="{{catalogSelect}}" style="background:{{color}}" wx:if="{{gooditem.is_gg!='2'&&gooditem.inventory!='0'}}"></view>
                                         </view>
                                         <view class="xgg" style="background:#cccccc" wx:if="{{gooditem.is_gg!='2'&&gooditem.inventory=='0'}}">已售完</view>
                                     </view>
@@ -125,7 +126,7 @@
                             </view>
                         </block>
                         <view class="jzz" wx:if="{{cpjzz}}">
-                            <image class="Rotation" src="/images/canteen/jzz.png"></image>
+                            <image class="Rotation" src="../../img/jzz.png"></image>
                             <view>加载中...</view>
                         </view>
                     </scroll-view>
@@ -156,10 +157,10 @@
                                     <view class="flex-row flex-grow-1 flex-y-center">
                                         <view class="pfimg">
                                             <view class="kximg">
-                                                <image src="/images/canteen/i-star.png"></image>
+                                                <image src="../../img/i-star.png"></image>
                                             </view>
                                             <view class="sximg" style="width: {{item.stars*20}}%">
-                                                <image src="/images/canteen/i-stars.png"></image>
+                                                <image src="../../img/i-stars.png"></image>
                                             </view>
                                         </view>
                                     </view>
@@ -175,11 +176,11 @@
                             </view>
                         </view>
                         <view class="jzz" hidden="{{mygd}}">
-                            <image class="Rotation" src="/images/canteen/jzz.png"></image>
+                            <image class="Rotation" src="../../img/jzz.png"></image>
                             <view>加载中...</view>
                         </view>
                         <view class="kong" wx:if="{{storelist.length==0&&mygd}}">
-                            <image src="/images/canteen/wushuju.png"></image>
+                            <image src="../../img/wushuju.png"></image>
                             <view>暂无相关数据</view>
                         </view>
                         <view class="jzwb" wx:if="{{mygd}}">
@@ -239,9 +240,9 @@
                             <rich-text nodes="{{store.details}}"></rich-text>
                         </view>
                     </view>
-                    <navigator class="jbsj" url="../my/bzzx">
+                    <view class="jbsj">
                         <button>举报商家</button>
-                    </navigator>
+                    </view>
                 </view>
             </swiper-item>
         </swiper>
@@ -249,27 +250,31 @@
     <view class="dbgwc flex-row flex-y-center" wx:if="{{selectedindex==0}}">
         <view catchtap="showcart" class="dbgwcl flex-row flex-y-center">
             <view class="dbgwcl-l flex-grow-0 flex-row flex-y-center" wx:if="{{cart_list.res.length==0}}">
-                <image class="gwcimg" src="/images/canteen/kgwc.png"></image>
+                <image class="gwcimg" src="../../img/kgwc.png"></image>
             </view>
             <view class="dbgwcl-l flex-grow-0 flex-row flex-y-center" wx:else>
-                <image class="gwcimg" src="/images/canteen/fgwc.png"></image>
+                <image class="gwcimg" src="../../img/fgwc.png"></image>
                 <view class="cart_num">{{cart_list.num}}</view>
             </view>
             <view class="dbgwcl-r flex-grow-1">
                 <view class="kname" wx:if="{{cart_list.res.length==0}}">购物车是空的</view>
-                <block wx:else>
-                    <view class="gwcmoney">
-                        <text>￥{{cart_list.money}}</text>
-                    </view>
-                    <view class="psf">另需配送费{{psf[0].money}}元</view>
-                </block>
+                <view class="gwcmoney" wx:else>
+                    <text>￥{{cart_list.money}}</text>
+                </view>
             </view>
         </view>
-        <block wx:if="{{store.is_rest=='2'&&time==1}}">
-            <view bindtap="submit" class="dbgwcr" style="background:{{color}}" wx:if="{{cart_list.money>0&&cart_list.money>=start_at}}">{{subtext}}</view>
-            <view class="dbgwcr" wx:else>{{subtext}}</view>
+        <block wx:if="{{!iskt&&oid==null}}">
+            <block wx:if="{{store.is_rest=='2'&&time==1}}">
+                <view bindtap="submit" class="dbgwcr" style="background:{{color}}" wx:if="{{cart_list.money>0&&cart_list.money>=start_at}}">{{subtext}}</view>
+                <view class="dbgwcr" wx:else>{{subtext}}</view>
+            </block>
+            <view class="dbgwcr" wx:else>商家暂未营业</view>
         </block>
-        <view class="dbgwcr" wx:else>商家暂未营业</view>
+        <block wx:if="{{oid!=null}}">
+            <view bindtap="addsp" class="dbgwcr" style="background:{{color}}" wx:if="{{cart_list.money>0&&cart_list.money>=start_at}}">加菜</view>
+            <view class="dbgwcr" wx:else>加菜</view>
+        </block>
+        <view class="dbgwcr" wx:if="{{iskt&&oid==null}}">此桌已开台</view>
     </view>
 </block>
 <view catchtap="closecart" class="share-modal {{share_modal_active?'active':''}}">
@@ -277,7 +282,7 @@
         <view class="shangpin_bomb">
             <view class="shangpin1" style="border-left:10rpx solid {{color}}">购物车</view>
             <view catchtap="clear" class="sh_clear flex-row flex-y-center" wx:if="{{cart_list.res.length>0}}">
-                <image src="/images/canteen/qksj.png"></image>
+                <image src="../../img/qksj.png"></image>
                 <view>清空</view>
             </view>
         </view>
@@ -299,16 +304,6 @@
                 </view>
             </view>
         </view>
-        <view class="dgsp1 flex-row flex-y-center">
-            <view class="dgspleft flex-grow-1">
-                <view class="dgspleft1">包装费</view>
-            </view>
-            <view class="dgspright flex-row flex-y-center flex-grow-0">
-                <view class="dgspright-l flex-grow-0">
-          ￥{{cart_list.box_money}}
-        </view>
-            </view>
-        </view>
     </view>
 </view>
 <view bindtap="queren" class="fwxxzz" hidden="{{fwxy}}"></view>
@@ -318,20 +313,14 @@
             <view class="headtitle">{{store.name}}</view>
             <view class="pfimg">
                 <view class="kximg">
-                    <image src="/images/canteen/i-star.png"></image>
+                    <image src="../../img/i-star.png"></image>
                 </view>
                 <view class="sximg" style="width: {{store.score*20}}%" wx:if="{{store.score!='0'}}">
-                    <image src="/images/canteen/i-stars.png"></image>
+                    <image src="../../img/i-stars.png"></image>
                 </view>
                 <view class="sximg" wx:else>
-                    <image src="/images/canteen/i-stars.png"></image>
+                    <image src="../../img/i-stars.png"></image>
                 </view>
-            </view>
-            <view class="flex-row flex-y-center" style=" flex-wrap: wrap">
-                <text class="sjnametext" style="padding-left:0">起送￥{{store.start_at}}</text>
-                <text class="sjnametext">人均￥{{store.capita}}</text>
-                <text class="sjnametext">配送￥{{psf[0].money}}</text>
-                <text class="sjnametext" style="border-right:0">{{storeset.ps_time}}</text>
             </view>
         </view>
         <view class="sjgg">
@@ -360,7 +349,7 @@
     <view class="spggbd">
         <view class="spgg_title">{{spname}}</view>
         <view bindtap="gbspgg" class="x">
-            <image src="/images/canteen/x.png"></image>
+            <image src="../../img/x.png"></image>
         </view>
         <view class="spgg_ggbd">
             <block wx:for="{{gg}}" wx:for-item="attr_group" wx:key="*this">
@@ -371,7 +360,7 @@
             </block>
         </view>
         <view class="spgg_ft flex-bet">
-            <view class="spgg_ftjg">￥{{gginfo.wm_money}}</view>
+            <view class="spgg_ftjg">￥{{gginfo.dn_money}}</view>
             <view bindtap="ggaddcart" class="spgg_ftjr">加入购物车</view>
         </view>
     </view>
@@ -379,10 +368,10 @@
 <view bindtap="gbyysj" class="yysjzz" hidden="{{yysjtoggle}}"></view>
 <view class="yysj {{yysjtoggle?'':'active'}}">
     <view class="yysjimg">
-        <image src="/images/canteen/wming/wyy.png"></image>
+        <image src="../../img/wming/wyy.png"></image>
     </view>
     <view class="fyysj">非营业时间，商户休息中</view>
-    <view class="kysj">营业时间：{{store.time}}-{{store.time2}}  {{store.time3}}-{{store.time4}}</view>
+    <view class="kysj">{{store.time}}开始营业</view>
     <view class="yysjft">
         <view bindtap="ckcd" class="ckcd">查看菜单</view>
         <view bindtap="gdsh" class="gdsh">更多商户</view>
@@ -390,7 +379,7 @@
 </view>
 <scroll-view class="modal {{spxqtoggle?'':'active'}}" scrollY="true">
     <view bindtap="gbspxq" class="spxqhead">
-        <image src="/images/canteen/spxqx.png"></image>
+        <image src="../../img/spxqx.png"></image>
     </view>
     <view class="spxqimg">
         <image src="{{spxqinfo.logo}}"></image>
@@ -407,8 +396,7 @@
         </view>
         <view class="cplbright4 flex-bet">
             <view class="cplbright4-l flex-grow-1">
-                <text>￥{{spxqinfo.money}}</text>
-                <text>￥{{spxqinfo.money2}}</text>
+                <text>￥{{spxqinfo.dn_money}}</text>
             </view>
             <view class="cartControl flex-grow-0">
                 <view catchtap="ggcartdec" class="cartdec" wx:if="{{spxqinfo.is_gg=='2'&&dishes[spxqinfo.catalogSelect].good[spxqinfo.goodindex].quantity>0}}"></view>

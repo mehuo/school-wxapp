@@ -1,4 +1,4 @@
-<include src="/zh_cjdianc/pages/commons/navbar/navbar.wxml"></include>
+<include src="/pages/canteen/commons/navbar/navbar.wxml"></include>
 <navigator class="return-index-btn" openType="redirect" url="/pages/index/index" wx:if="{{show_index}}">
     <image src="/images/nav-icon-index.png" style="width: 50rpx;height: 50rpx"></image>
 </navigator>
@@ -41,7 +41,7 @@
             </view>
                 </view>
                 <view class="flex-grow-0">
-                    <image src="/images//blackjt.png" style="width:40rpx;height:40rpx;"></image>
+                    <image src="/images/canteen/blackjt.png" style="width:40rpx;height:40rpx;"></image>
                 </view>
             </view>
             <view class="goods-list">

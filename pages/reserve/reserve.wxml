@@ -10,7 +10,7 @@
                     <picker bindchange="bindDateChange" end="" mode="date" name="datepicker" start="{{date}}" value="{{date}}">
                         <view class="picker reserve_sele">{{date}}</view>
                     </picker>
-                    <image class="reserve_arrow" src="../../img/huise@2x.png"></image>
+                    <image class="reserve_arrow" src="/images/canteen/huise@2x.png"></image>
                 </view>
             </view>
             <view class="flex reserve_type">
@@ -19,7 +19,7 @@
                     <picker bindchange="bindTimeChange" end="23:59" mode="time" name="timepicker" start="{{store.time}}" value="{{time}}">
                         <view class="picker">{{time}}</view>
                     </picker>
-                    <image class="reserve_arrow" src="../../img/huise@2x.png"></image>
+                    <image class="reserve_arrow" src="/images/canteen/huise@2x.png"></image>
                 </view>
             </view>
             <view class="flex reserve_type {{item.open?'kind-list__item-hd_show':''}}">
@@ -31,7 +31,7 @@
                             <view class="picker reserve_sele" wx:else>商家暂未添加桌位类型</view>
                         </picker>
                     </view>
-                    <image class="reserve_arrow" src="../../img/huise@2x.png"></image>
+                    <image class="reserve_arrow" src="/images/canteen/huise@2x.png"></image>
                 </view>
             </view>
             <view class="flex reserve_type">
@@ -47,7 +47,7 @@
                     <picker bindchange="bindjcrsChange" name="jcrs" range="{{jcrsarray}}" value="{{jcrsarray[jindex]}}">
                         <view class="picker">{{jcrsarray[jindex]}}</view>
                     </picker>
-                    <image class="reserve_arrow" src="../../img/huise@2x.png"></image>
+                    <image class="reserve_arrow" src="/images/canteen/huise@2x.png"></image>
                 </view>
             </view>
             <view class="reserve_type reserve_man">
@@ -82,10 +82,10 @@
                 <view class="b-head">商品列表</view>
             </view>
             <view class="reserve ">
-                <navigator class="flex reserve_type" style="border:none;" url="../smdc/smdcxgsp?storeid={{store.id}}&zuid={{zuid}}&dr_id={{drid}}&tableid={{tableid}}&isyy=1">
+                <navigator class="flex reserve_type" style="border:none;" url="/pages/smdc/smdcxgsp?storeid={{store.id}}&zuid={{zuid}}&dr_id={{drid}}&tableid={{tableid}}&isyy=1">
                     <view>前往选择商品</view>
                     <view class="reserve_date">
-                        <image class="reserve_arrow" src="../../img/huise@2x.png"></image>
+                        <image class="reserve_arrow" src="/images/canteen/img/huise@2x.png"></image>
                     </view>
                 </navigator>
                 <view class="cart-item flex-row flex-y-center" wx:for="{{cart_list}}" wx:key="*this">
@@ -135,7 +135,7 @@
                 <label>
                     <view class="weui-cell">
                         <view class="zfimg">
-                            <image src="../../img/weixin.png"></image>
+                            <image src="/images/canteen/weixin.png"></image>
                         </view>
                         <view class="weui-cell__bd">微信支付</view>
                         <view class="weui-cell__ft">

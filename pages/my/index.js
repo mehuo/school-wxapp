@@ -144,9 +144,9 @@ Page({
     },
     //到积分页面-页面暂无实现
     integral: function(e) {
-        wx.navigateTo({
-            url: "integral"
-        });
+        // wx.navigateTo({
+        //     url: "integral"
+        // });
     },
     sign_in: function(e) {
         wx.navigateTo({

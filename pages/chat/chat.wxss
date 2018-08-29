@@ -1,13 +1,13 @@
 /**index.wxss**/
 
-.msgs-wrapper{position: absolute;bottom:100rpx;left:10rpx;right:10rpx;}
+.msgs-wrapper{position: absolute;bottom:140rpx;left:10rpx;right:10rpx;}
 .msgs{max-width:80%;display:block;padding:5rpx;background:rgba(255,255,255,.7);margin:5rpx 0;word-wrap:break-word}
 .msg-item{padding:8rpx 5rpx;border-radius:4rpx;font-size:14px;}
 .nickname{color:#ff7906}
 
 .input-section{
   position: absolute;
-  bottom:10rpx;
+  bottom:40rpx;
   left:10rpx;
   right:10rpx;
 }
@@ -16,7 +16,7 @@
   background:#fff;
   margin-right:100rpx;
   padding:10rpx;
-  height:30px;
+  height:40px;
 }
 
 .input-section .love{

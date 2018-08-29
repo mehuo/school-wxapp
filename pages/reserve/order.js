@@ -46,7 +46,7 @@ Page({
                 pagesize: 10
             },
             success: function(t) {
-                if(t.statusCode == 200){
+                if(t.statusCode == 200 && t.data && t.data.length>0){
                     console.log("分页返回的列表数据", t.data), t.data.length < 10 ? a.setData({
                         mygd: !0,
                         jzgd: !0

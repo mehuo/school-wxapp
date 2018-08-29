@@ -1,4 +1,4 @@
-var qqmapsdk, app = getApp(), util = require("../../utils/util.js"), QQMapWX = require("../../utils/qqmap-wx-jssdk.js");
+var qqmapsdk, app = getApp(), util = require("../../../utils/util.js"), QQMapWX = require("../../../utils/qqmap-wx-jssdk.js");
 
 Page({
     data: {

@@ -161,12 +161,13 @@
         </view>
         <template is="sort_list" data="{{selected:selected,sortSelected:sortSelected,issx:issx,mask1Hidden:mask1Hidden}}"></template>
         <view class="sjlb flex-row" wx:for="{{storelist}}" wx:key="*this">
-            <navigator class="sjleft flex-grow-0" url="/pages/canteen/takeout/takeoutindex?storeid={{item.id}}">
+            <!-- url="/pages/canteen/takeout/takeoutindex?storeid={{item.id}}" -->
+            <navigator class="sjleft flex-grow-0" url="/pages/canteen/seller/index?storeid={{item.id}}" >
                 <image class="sjleftimg" src="{{item.logo}}"></image>
                 <view class="xzhiding" wx:if="{{item.is_brand=='1'}}">品牌</view>
             </navigator>
             <view class="sjright flex-grow-1 flex-col">
-                <navigator url="/pages/canteen/takeout/takeoutindex?storeid={{item.id}}">
+                <navigator url="/pages/canteen/seller/index?storeid={{item.id}}">
                     <view class="sjright1 flex-row flex-y-center">
                         <view class="sjright1-l gobyndsingle">{{item.name}}</view>
                     </view>

@@ -1,33 +1,42 @@
 {
   "pages":[ 
-    "pages/canteen/index/index",
-    
     "pages/index/index",
     
+    "pages/canteen/index/index",
+    "pages/canteen/seller/index",
+
+
+    "pages/car/car",
+
+    "pages/ruzhu/index",
+    "pages/ruzhu/info",
+    "pages/ruzhu/xieyi",
+
+    "pages/smdc/smdcxgsp",
+
     
-    
+    "pages/reserve/reserve",
+    "pages/reserve/reserveinfo",
+    "pages/reserve/order",
     "pages/chat/chat",
     
     
     "pages/my/index",
+    "pages/my/myyhq",
+
 
     "pages/canteen/takeout/takeoutindex",
+    "pages/canteen/takeout/takeoutspxq",
+    "pages/canteen/takeout/takeoutform",
 
 
-    "pages/canteen/seller/index",
 
-    "pages/order/order",
 
-    "pages/my/myyhq",
     "pages/address/address",
     "pages/address/bjdz",
-    "pages/reserve/order",
+    "pages/order/order"
 
-
-    "pages/circle/circle",
     
-    
-    "pages/me/me"
   ],
   "window":{
     "backgroundTextStyle":"light",

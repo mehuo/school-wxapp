@@ -605,9 +605,9 @@ Page({
                         type: 2
                     },
                     success: function(t) {
-                        if(t.statusCode == 200 && t.data){
+                        if(t.statusCode == 200 && t.data && t.data.store){
                             console.log(t.data);
-                            var a = t.data.store.time, e = t.data.store.time2, o = t.data.store.time3, s = t.data.store.time4, i = t.data.store.is_rest;
+                            var a = t.data.store.time;e = t.data.store.time2, o = t.data.store.time3, s = t.data.store.time4, i = t.data.store.is_rest;
                             console.log("当前的系统时间为" + l), console.log("商家的营业时间从" + a + "至" + e, o + "至" + s), 
                             1 == i ? (c.setData({
                                 yysjtoggle: !1
@@ -723,7 +723,7 @@ Page({
                                             },
                                             success: function(t) {
                                                 console.log(t.data);
-                                                if(t.data){
+                                                if(t.data && t.data.length>0){
                                                     for (var a = 0; a < t.data.length; a++) t.data[a].quantity = Number(t.data[a].quantity);
                                                     i[0].good = t.data, c.setData({
                                                         cpjzz: !1

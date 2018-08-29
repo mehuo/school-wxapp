@@ -4,48 +4,51 @@ Page({
     data: {
         index: 0,
         navbar: [],
+        store_info : {
+            id : 1
+        },
         nav: [ {
             bindtap: "takeout",
-            img: "../../img/seller/two.png",
+            img: "/images/canteen/seller/two.png",
             name: "外卖",
-            active: !1,
+            active: !0,
             smwz: "快速送达"
         }, {
             bindtap: "smdc",
-            img: "../../img/seller/six.png",
+            img: "/images/canteen/seller/six.png",
             name: "扫码点餐",
             active: !1,
             smwz: "扫一扫轻松下单"
         }, {
             bindtap: "plan",
-            img: "../../img/seller/one.png",
+            img: "/images/canteen/seller/one.png",
             name: "预约",
-            active: !1,
+            active: !0,
             smwz: "提前预定"
         }, {
             bindtap: "sy",
-            img: "../../img/seller/four.png",
+            img: "/images/canteen/seller/four.png",
             name: "收银",
             active: !1,
             smwz: "当面收款"
         }, {
             bindtap: "cj",
-            img: "../../img/seller/three.png",
+            img: "/images/canteen/seller/three.png",
             name: "存酒",
             active: !1
         }, {
             bindtap: "hjfwy",
-            img: "../../img/seller/five.png",
+            img: "/images/canteen/seller/five.png",
             name: "呼叫服务员",
             active: !1
         }, {
             bindtap: "yhq",
-            img: "../../img/seller/seven.png",
+            img: "/images/canteen/seller/seven.png",
             name: "优惠券",
             active: !1
         }, {
             bindtap: "pdqh",
-            img: "../../img/seller/eight.png",
+            img: "/images/canteen/seller/eight.png",
             name: "排队取号",
             active: !1
         } ],
@@ -138,12 +141,12 @@ Page({
     },
     takeout: function() {
         wx.navigateTo({
-            url: "/zh_cjdianc/pages/takeout/takeoutindex?storeid=" + this.data.store_info.id
+            url: "/pages/canteen/takeout/takeoutindex?storeid=" + this.data.store_info.id
         });
     },
     plan: function() {
         wx.navigateTo({
-            url: "/zh_cjdianc/pages/reserve/reserve?storeid=" + this.data.store_info.id
+            url: "/pages/reserve/reserve?storeid=" + this.data.store_info.id
         });
     },
     qsy: function(t) {
@@ -202,15 +205,19 @@ Page({
                         storelist: a,
                         bfstorelist: a,
                         navbar: e
-                    }), t.data.assess.length < 10 ? s.setData({
-                        mygd: !0,
-                        jzgd: !0,
-                        isjzz: !1
-                    }) : s.setData({
-                        jzgd: !0,
-                        pagenum: i + 1,
-                        isjzz: !1
-                    }), console.log(a);
+                    });
+                    if(t.data.assess){
+                        t.data.assess.length < 10 ? s.setData({
+                            mygd: !0,
+                            jzgd: !0,
+                            isjzz: !1
+                        }) : s.setData({
+                            jzgd: !0,
+                            pagenum: i + 1,
+                            isjzz: !1
+                        }), console.log(a);
+                    }
+                    
                 }
                 
             }
@@ -265,11 +272,14 @@ Page({
                 store_id: getApp().sjid
             },
             success: function(t) {
-                console.log(t.data);
-                for (var e = 0; e < t.data.length; e++) t.data[e].discount = (Number(t.data[e].money) / Number(t.data[e].money2) * 10).toFixed(1);
-                a.setData({
-                    tjcarr: t.data
-                });
+                console.log(t);
+                if(t.data && t.data.length>0){
+                  for (var e = 0; e < t.data.length; e++) t.data[e].discount = (Number(t.data[e].money) / Number(t.data[e].money2) * 10).toFixed(1);
+                    a.setData({
+                        tjcarr: t.data
+                    });  
+                }
+                
             }
         });
     },
@@ -313,10 +323,13 @@ Page({
                 if(t.data){
                     console.log("商家详情"), console.log(t), wx.setNavigationBarTitle({
                         title: t.data.store.name
-                    }), d.setData({
-                        store_info: t.data.store,
-                        storeset: t.data.storeset
                     });
+                    if(t.data.store){
+                        d.setData({
+                            store_info: t.data.store,
+                            storeset: t.data.storeset
+                        });
+                    }
                     var e = t.data.storeset, a = d.data.nav;
                     "1" == e.is_dn && (a[1].active = !0, "" != e.dn_img && (a[1].img = e.dn_img), "" != e.dn_name && (a[1].name = e.dn_name), 
                     "" != e.dnsm && (a[1].smwz = e.dnsm)), "1" == e.is_wm && (a[0].active = !0, "" != e.wm_img && (a[0].img = e.wm_img), 
